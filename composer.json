@@ -1,0 +1,15 @@
+{
+    "name": "kercode/coffee",
+    "autoload": {
+        "psr-4": {
+            "Kercode\\Coffee\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Alan Dauphin",
+            "email": "alandauphin@hotmail.fr"
+        }
+    ],
+    "require": {}
+}
