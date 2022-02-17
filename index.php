@@ -1,26 +1,24 @@
 <?php
 
-// echo ('Hello World ! Ca va? ok ok ');
+require('vendor/autoload.php');
 
+$dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
-function bdd()
-{
-    try {
-        $bdd = new PDO("mysql:dbname=abclight;host=localhost", "root", "");
-    } catch (PDOException $e) {
-        echo "Bravo: " . $e->getMessage();
-    }
+function dbaccess() {
+  $dbConnection = "mysql:dbname=". $_ENV['DB_NAME'] ."; host=". $_ENV['DB_HOST'] .":". $_ENV['DB_PORT'] ."; charset=utf8";
+  $user = $_ENV['DB_USERNAME'];
+  $pwd = $_ENV['DB_PASSWORD'];
+  
+  $db = new PDO ($dbConnection, $user, $pwd, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-    return $bdd;
+  return $db;
 }
+  
+$db = dbaccess();
 
-function waiters()
-{
-    global $bdd;
+$req = $db->query('SELECT name FROM waiter')->fetchAll();
 
-    $req = $bdd->query('SELECT id, name FROM waiters');
-
-    $waiters = $req->fetchAll();
-
-    return $waiters;
+foreach ($req as $dbreq) {
+  echo $dbreq['name'] . "<br>";
 }
