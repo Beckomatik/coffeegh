@@ -2,8 +2,13 @@
 
 require('vendor/autoload.php');
 
+if($SERVER['HTTP_POST'] != "coffee-fee.herokuapp.com"){
 $dotenv = \Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
+}
+
+echo('hello world !');
+print '<br/>';
 
 function dbaccess() {
   $dbConnection = "mysql:dbname=". $_ENV['DB_NAME'] ."; host=". $_ENV['DB_HOST'] .":". $_ENV['DB_PORT'] ."; charset=utf8";
