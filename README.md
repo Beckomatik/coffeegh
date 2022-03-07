@@ -1,0 +1,1 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/b0388801066271577965/maintainability)](https://codeclimate.com/github/Beckomatik/coffeegh/maintainability)
